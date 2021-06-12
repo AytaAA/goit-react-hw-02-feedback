@@ -1,4 +1,5 @@
 import style from "./Feedback.module.css"
+import PropTypes from "prop-types"
 
 const FeedbackStats = ({ stats: { good, neutral, bad }, total, positive }) => (
     <div className={style.feedback_stats}>
@@ -12,3 +13,13 @@ const FeedbackStats = ({ stats: { good, neutral, bad }, total, positive }) => (
 )
 
 export default FeedbackStats
+
+FeedbackStats.propTypes = {
+    total: PropTypes.number.isRequired,
+    positive: PropTypes.string.isRequired,
+    stats: PropTypes.arrayOf({
+        good: PropTypes.number.isRequired,
+        neutral: PropTypes.number.isRequired,
+        bad: PropTypes.number.isRequired,
+    }).isRequired,
+}
